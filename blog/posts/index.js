@@ -2,10 +2,18 @@ const express = require("express");
 const { randomBytes } = require("crypto");
 const bodyParser = require("body-parser");
 const app = express();
-
+const cors = require("cors");
+app.use(cors(
+    {
+        origin : "http://localhost:3000",
+        methods : "*",
+        credentials : true
+    }
+));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-const posts = {}
+
+const posts = {};
 
 app.get("/posts", (req, res) => {
     res.send(posts);
