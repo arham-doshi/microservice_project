@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import axios from 'axios';
 
-export default ({postId}) => {
+export default function CommentCreate({postId}) {
     const [content, setContent] = useState('');
     const onSubmit = async (event) => {
         event.preventDefault();

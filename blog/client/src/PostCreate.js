@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import axios from "axios";
 
 
-export default () => {
+export default function PostCreate() {
     let axiosConfig = {
         headers: {
             'Content-Type': 'application/json;charset=UTF-8',
