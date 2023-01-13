@@ -7,9 +7,10 @@ export default function PostList() {
     const [posts, setPosts] = useState({});
 
     const fetchPosts = async () => {
-        const res = await axios.get("http://localhost:4000/posts");
-        
+        const res = await axios.get("http://localhost:4002/posts");
+        console.log("here in fetch post post list : ", res.data);
         setPosts(res.data);
+        
     }
 
     useEffect(() => {
@@ -17,6 +18,7 @@ export default function PostList() {
     }, []);
     console.log(posts);
     const renderedPosts = Object.values(posts).map((post) => {
+        console.log(post);
         return <div
         className="card"
         style={{width:'30%', marginBottom:'20px'}}
@@ -24,8 +26,8 @@ export default function PostList() {
         >
             <div className="card-body">
                 <h3>{post.title}</h3>
-                <CommentList postId={post.title} />
-                <CommentCreate postId={post.title} />
+                <CommentList comments={post.comments} />
+                <CommentCreate postId={post.id} />
             </div>
         </div>
         
